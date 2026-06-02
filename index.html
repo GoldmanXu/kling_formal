@@ -9,7 +9,8 @@
   body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
          max-width: 1300px; margin: 24px auto; padding: 0 16px; line-height: 1.45; }
   h1 { font-size: 22px; margin: 0 0 4px; }
-  .legend { color: #666; font-size: 13px; margin-bottom: 24px; }
+  .legend { color: #666; font-size: 13px; margin-bottom: 6px; }
+  .note { color: #888; font-size: 12px; margin-bottom: 24px; }
   .row { border-top: 1px solid #ddd; padding: 18px 0; }
   .row-head { display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap; }
   .row-id { font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
@@ -27,18 +28,25 @@
   .cell .name { font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
                 font-size: 11px; color: #666; text-align: center; }
   .cell video { width: 280px; height: auto; background: #000; display: block; }
+  .dd { font-size: 12px; text-align: center; padding: 2px 6px; border-radius: 4px;
+        font-family: ui-monospace, SFMono-Regular, Menlo, monospace; }
+  .dd.t { background: #e3f7e3; color: #176117; }
+  .dd.f { background: #eee; color: #777; }
   @media (prefers-color-scheme: dark) {
     body { background: #111; color: #eee; }
-    .legend, .row-id, .prompt, .cell .name { color: #bbb; }
+    .legend, .note, .row-id, .prompt, .cell .name { color: #bbb; }
     .row { border-top-color: #333; }
     .controls button { background: #222; color: #eee; border-color: #555; }
     .controls button:hover { background: #333; }
+    .dd.t { background: #16361a; color: #7fd98a; }
+    .dd.f { background: #2a2a2a; color: #999; }
   }
 </style>
 </head>
 <body>
 <h1>kling_formal — check_v4 video demo</h1>
-<div class="legend">55 prompts × 4 variants. Column order (L→R): base, hk-only-uni-11000, ly_only_hpsv3_video, ly_video_vr_only</div>
+<div class="legend">55 prompts × 4 variants. Column order (L→R): base (0.724), hk-only-uni-11000 (0.793), ly_only_hpsv3_video (0.845), ly_video_vr_only (0.897)</div>
+<div class="note">Badge above each video = VBench per-video <code>dynamic_degree</code> (✓ True = dynamic motion detected, ✗ False = static). Per-variant aggregate (fraction dynamic): base = 0.724; hk-only-uni-11000 = 0.793; ly_only_hpsv3_video = 0.845; ly_video_vr_only = 0.897</div>
 <section class="row" id="row-1">
   <div class="row-head">
     <span class="row-idx">Row 1</span>
@@ -52,18 +60,22 @@
   </div>
   <div class="grid">
     <div class="cell">
+      <div class="dd t">dynamic_degree: ✓ True</div>
       <video src="https://cdn.jsdelivr.net/gh/GoldmanXu/kling_formal@main/videos/base/batch33_sample_001_row0001.mp4" controls preload="metadata" playsinline muted></video>
       <div class="name">base</div>
     </div>
     <div class="cell">
+      <div class="dd t">dynamic_degree: ✓ True</div>
       <video src="https://cdn.jsdelivr.net/gh/GoldmanXu/kling_formal@main/videos/hk-only-uni-11000/batch33_sample_001_row0001.mp4" controls preload="metadata" playsinline muted></video>
       <div class="name">hk-only-uni-11000</div>
     </div>
     <div class="cell">
+      <div class="dd t">dynamic_degree: ✓ True</div>
       <video src="https://cdn.jsdelivr.net/gh/GoldmanXu/kling_formal@main/videos/ly_only_hpsv3_video/batch33_sample_001_row0001.mp4" controls preload="metadata" playsinline muted></video>
       <div class="name">ly_only_hpsv3_video</div>
     </div>
     <div class="cell">
+      <div class="dd t">dynamic_degree: ✓ True</div>
       <video src="https://cdn.jsdelivr.net/gh/GoldmanXu/kling_formal@main/videos/ly_video_vr_only/batch33_sample_001_row0001.mp4" controls preload="metadata" playsinline muted></video>
       <div class="name">ly_video_vr_only</div>
     </div>
@@ -83,18 +95,22 @@
   </div>
   <div class="grid">
     <div class="cell">
+      <div class="dd f">dynamic_degree: ✗ False</div>
       <video src="https://cdn.jsdelivr.net/gh/GoldmanXu/kling_formal@main/videos/base/batch33_sample_001_row0003.mp4" controls preload="metadata" playsinline muted></video>
       <div class="name">base</div>
     </div>
     <div class="cell">
+      <div class="dd f">dynamic_degree: ✗ False</div>
       <video src="https://cdn.jsdelivr.net/gh/GoldmanXu/kling_formal@main/videos/hk-only-uni-11000/batch33_sample_001_row0003.mp4" controls preload="metadata" playsinline muted></video>
       <div class="name">hk-only-uni-11000</div>
     </div>
     <div class="cell">
+      <div class="dd t">dynamic_degree: ✓ True</div>
       <video src="https://cdn.jsdelivr.net/gh/GoldmanXu/kling_formal@main/videos/ly_only_hpsv3_video/batch33_sample_001_row0003.mp4" controls preload="metadata" playsinline muted></video>
       <div class="name">ly_only_hpsv3_video</div>
     </div>
     <div class="cell">
+      <div class="dd t">dynamic_degree: ✓ True</div>
       <video src="https://cdn.jsdelivr.net/gh/GoldmanXu/kling_formal@main/videos/ly_video_vr_only/batch33_sample_001_row0003.mp4" controls preload="metadata" playsinline muted></video>
       <div class="name">ly_video_vr_only</div>
     </div>
@@ -114,18 +130,22 @@
   </div>
   <div class="grid">
     <div class="cell">
+      <div class="dd t">dynamic_degree: ✓ True</div>
       <video src="https://cdn.jsdelivr.net/gh/GoldmanXu/kling_formal@main/videos/base/batch33_sample_001_row0004.mp4" controls preload="metadata" playsinline muted></video>
       <div class="name">base</div>
     </div>
     <div class="cell">
+      <div class="dd t">dynamic_degree: ✓ True</div>
       <video src="https://cdn.jsdelivr.net/gh/GoldmanXu/kling_formal@main/videos/hk-only-uni-11000/batch33_sample_001_row0004.mp4" controls preload="metadata" playsinline muted></video>
       <div class="name">hk-only-uni-11000</div>
     </div>
     <div class="cell">
+      <div class="dd t">dynamic_degree: ✓ True</div>
       <video src="https://cdn.jsdelivr.net/gh/GoldmanXu/kling_formal@main/videos/ly_only_hpsv3_video/batch33_sample_001_row0004.mp4" controls preload="metadata" playsinline muted></video>
       <div class="name">ly_only_hpsv3_video</div>
     </div>
     <div class="cell">
+      <div class="dd t">dynamic_degree: ✓ True</div>
       <video src="https://cdn.jsdelivr.net/gh/GoldmanXu/kling_formal@main/videos/ly_video_vr_only/batch33_sample_001_row0004.mp4" controls preload="metadata" playsinline muted></video>
       <div class="name">ly_video_vr_only</div>
     </div>
@@ -145,18 +165,22 @@
   </div>
   <div class="grid">
     <div class="cell">
+      <div class="dd f">dynamic_degree: ✗ False</div>
       <video src="https://cdn.jsdelivr.net/gh/GoldmanXu/kling_formal@main/videos/base/batch33_sample_002_row0000.mp4" controls preload="metadata" playsinline muted></video>
       <div class="name">base</div>
     </div>
     <div class="cell">
+      <div class="dd t">dynamic_degree: ✓ True</div>
       <video src="https://cdn.jsdelivr.net/gh/GoldmanXu/kling_formal@main/videos/hk-only-uni-11000/batch33_sample_002_row0000.mp4" controls preload="metadata" playsinline muted></video>
       <div class="name">hk-only-uni-11000</div>
     </div>
     <div class="cell">
+      <div class="dd f">dynamic_degree: ✗ False</div>
       <video src="https://cdn.jsdelivr.net/gh/GoldmanXu/kling_formal@main/videos/ly_only_hpsv3_video/batch33_sample_002_row0000.mp4" controls preload="metadata" playsinline muted></video>
       <div class="name">ly_only_hpsv3_video</div>
     </div>
     <div class="cell">
+      <div class="dd t">dynamic_degree: ✓ True</div>
       <video src="https://cdn.jsdelivr.net/gh/GoldmanXu/kling_formal@main/videos/ly_video_vr_only/batch33_sample_002_row0000.mp4" controls preload="metadata" playsinline muted></video>
       <div class="name">ly_video_vr_only</div>
     </div>
@@ -176,18 +200,22 @@
   </div>
   <div class="grid">
     <div class="cell">
+      <div class="dd f">dynamic_degree: ✗ False</div>
       <video src="https://cdn.jsdelivr.net/gh/GoldmanXu/kling_formal@main/videos/base/batch33_sample_002_row0002.mp4" controls preload="metadata" playsinline muted></video>
       <div class="name">base</div>
     </div>
     <div class="cell">
+      <div class="dd t">dynamic_degree: ✓ True</div>
       <video src="https://cdn.jsdelivr.net/gh/GoldmanXu/kling_formal@main/videos/hk-only-uni-11000/batch33_sample_002_row0002.mp4" controls preload="metadata" playsinline muted></video>
       <div class="name">hk-only-uni-11000</div>
     </div>
     <div class="cell">
+      <div class="dd f">dynamic_degree: ✗ False</div>
       <video src="https://cdn.jsdelivr.net/gh/GoldmanXu/kling_formal@main/videos/ly_only_hpsv3_video/batch33_sample_002_row0002.mp4" controls preload="metadata" playsinline muted></video>
       <div class="name">ly_only_hpsv3_video</div>
     </div>
     <div class="cell">
+      <div class="dd t">dynamic_degree: ✓ True</div>
       <video src="https://cdn.jsdelivr.net/gh/GoldmanXu/kling_formal@main/videos/ly_video_vr_only/batch33_sample_002_row0002.mp4" controls preload="metadata" playsinline muted></video>
       <div class="name">ly_video_vr_only</div>
     </div>
@@ -207,18 +235,22 @@
   </div>
   <div class="grid">
     <div class="cell">
+      <div class="dd t">dynamic_degree: ✓ True</div>
       <video src="https://cdn.jsdelivr.net/gh/GoldmanXu/kling_formal@main/videos/base/batch33_sample_002_row0003.mp4" controls preload="metadata" playsinline muted></video>
       <div class="name">base</div>
     </div>
     <div class="cell">
+      <div class="dd t">dynamic_degree: ✓ True</div>
       <video src="https://cdn.jsdelivr.net/gh/GoldmanXu/kling_formal@main/videos/hk-only-uni-11000/batch33_sample_002_row0003.mp4" controls preload="metadata" playsinline muted></video>
       <div class="name">hk-only-uni-11000</div>
     </div>
     <div class="cell">
+      <div class="dd f">dynamic_degree: ✗ False</div>
       <video src="https://cdn.jsdelivr.net/gh/GoldmanXu/kling_formal@main/videos/ly_only_hpsv3_video/batch33_sample_002_row0003.mp4" controls preload="metadata" playsinline muted></video>
       <div class="name">ly_only_hpsv3_video</div>
     </div>
     <div class="cell">
+      <div class="dd t">dynamic_degree: ✓ True</div>
       <video src="https://cdn.jsdelivr.net/gh/GoldmanXu/kling_formal@main/videos/ly_video_vr_only/batch33_sample_002_row0003.mp4" controls preload="metadata" playsinline muted></video>
       <div class="name">ly_video_vr_only</div>
     </div>
@@ -238,18 +270,22 @@
   </div>
   <div class="grid">
     <div class="cell">
+      <div class="dd f">dynamic_degree: ✗ False</div>
       <video src="https://cdn.jsdelivr.net/gh/GoldmanXu/kling_formal@main/videos/base/batch33_sample_002_row0004.mp4" controls preload="metadata" playsinline muted></video>
       <div class="name">base</div>
     </div>
     <div class="cell">
+      <div class="dd f">dynamic_degree: ✗ False</div>
       <video src="https://cdn.jsdelivr.net/gh/GoldmanXu/kling_formal@main/videos/hk-only-uni-11000/batch33_sample_002_row0004.mp4" controls preload="metadata" playsinline muted></video>
       <div class="name">hk-only-uni-11000</div>
     </div>
     <div class="cell">
+      <div class="dd f">dynamic_degree: ✗ False</div>
       <video src="https://cdn.jsdelivr.net/gh/GoldmanXu/kling_formal@main/videos/ly_only_hpsv3_video/batch33_sample_002_row0004.mp4" controls preload="metadata" playsinline muted></video>
       <div class="name">ly_only_hpsv3_video</div>
     </div>
     <div class="cell">
+      <div class="dd f">dynamic_degree: ✗ False</div>
       <video src="https://cdn.jsdelivr.net/gh/GoldmanXu/kling_formal@main/videos/ly_video_vr_only/batch33_sample_002_row0004.mp4" controls preload="metadata" playsinline muted></video>
       <div class="name">ly_video_vr_only</div>
     </div>
@@ -269,18 +305,22 @@
   </div>
   <div class="grid">
     <div class="cell">
+      <div class="dd t">dynamic_degree: ✓ True</div>
       <video src="https://cdn.jsdelivr.net/gh/GoldmanXu/kling_formal@main/videos/base/batch33_sample_003_row0000.mp4" controls preload="metadata" playsinline muted></video>
       <div class="name">base</div>
     </div>
     <div class="cell">
+      <div class="dd t">dynamic_degree: ✓ True</div>
       <video src="https://cdn.jsdelivr.net/gh/GoldmanXu/kling_formal@main/videos/hk-only-uni-11000/batch33_sample_003_row0000.mp4" controls preload="metadata" playsinline muted></video>
       <div class="name">hk-only-uni-11000</div>
     </div>
     <div class="cell">
+      <div class="dd t">dynamic_degree: ✓ True</div>
       <video src="https://cdn.jsdelivr.net/gh/GoldmanXu/kling_formal@main/videos/ly_only_hpsv3_video/batch33_sample_003_row0000.mp4" controls preload="metadata" playsinline muted></video>
       <div class="name">ly_only_hpsv3_video</div>
     </div>
     <div class="cell">
+      <div class="dd t">dynamic_degree: ✓ True</div>
       <video src="https://cdn.jsdelivr.net/gh/GoldmanXu/kling_formal@main/videos/ly_video_vr_only/batch33_sample_003_row0000.mp4" controls preload="metadata" playsinline muted></video>
       <div class="name">ly_video_vr_only</div>
     </div>
@@ -300,18 +340,22 @@
   </div>
   <div class="grid">
     <div class="cell">
+      <div class="dd t">dynamic_degree: ✓ True</div>
       <video src="https://cdn.jsdelivr.net/gh/GoldmanXu/kling_formal@main/videos/base/batch33_sample_003_row0002.mp4" controls preload="metadata" playsinline muted></video>
       <div class="name">base</div>
     </div>
     <div class="cell">
+      <div class="dd t">dynamic_degree: ✓ True</div>
       <video src="https://cdn.jsdelivr.net/gh/GoldmanXu/kling_formal@main/videos/hk-only-uni-11000/batch33_sample_003_row0002.mp4" controls preload="metadata" playsinline muted></video>
       <div class="name">hk-only-uni-11000</div>
     </div>
     <div class="cell">
+      <div class="dd t">dynamic_degree: ✓ True</div>
       <video src="https://cdn.jsdelivr.net/gh/GoldmanXu/kling_formal@main/videos/ly_only_hpsv3_video/batch33_sample_003_row0002.mp4" controls preload="metadata" playsinline muted></video>
       <div class="name">ly_only_hpsv3_video</div>
     </div>
     <div class="cell">
+      <div class="dd t">dynamic_degree: ✓ True</div>
       <video src="https://cdn.jsdelivr.net/gh/GoldmanXu/kling_formal@main/videos/ly_video_vr_only/batch33_sample_003_row0002.mp4" controls preload="metadata" playsinline muted></video>
       <div class="name">ly_video_vr_only</div>
     </div>
@@ -331,18 +375,22 @@
   </div>
   <div class="grid">
     <div class="cell">
+      <div class="dd t">dynamic_degree: ✓ True</div>
       <video src="https://cdn.jsdelivr.net/gh/GoldmanXu/kling_formal@main/videos/base/batch33_sample_004_row0000.mp4" controls preload="metadata" playsinline muted></video>
       <div class="name">base</div>
     </div>
     <div class="cell">
+      <div class="dd t">dynamic_degree: ✓ True</div>
       <video src="https://cdn.jsdelivr.net/gh/GoldmanXu/kling_formal@main/videos/hk-only-uni-11000/batch33_sample_004_row0000.mp4" controls preload="metadata" playsinline muted></video>
       <div class="name">hk-only-uni-11000</div>
     </div>
     <div class="cell">
+      <div class="dd t">dynamic_degree: ✓ True</div>
       <video src="https://cdn.jsdelivr.net/gh/GoldmanXu/kling_formal@main/videos/ly_only_hpsv3_video/batch33_sample_004_row0000.mp4" controls preload="metadata" playsinline muted></video>
       <div class="name">ly_only_hpsv3_video</div>
     </div>
     <div class="cell">
+      <div class="dd t">dynamic_degree: ✓ True</div>
       <video src="https://cdn.jsdelivr.net/gh/GoldmanXu/kling_formal@main/videos/ly_video_vr_only/batch33_sample_004_row0000.mp4" controls preload="metadata" playsinline muted></video>
       <div class="name">ly_video_vr_only</div>
     </div>
@@ -362,18 +410,22 @@
   </div>
   <div class="grid">
     <div class="cell">
+      <div class="dd t">dynamic_degree: ✓ True</div>
       <video src="https://cdn.jsdelivr.net/gh/GoldmanXu/kling_formal@main/videos/base/batch33_sample_004_row0001.mp4" controls preload="metadata" playsinline muted></video>
       <div class="name">base</div>
     </div>
     <div class="cell">
+      <div class="dd t">dynamic_degree: ✓ True</div>
       <video src="https://cdn.jsdelivr.net/gh/GoldmanXu/kling_formal@main/videos/hk-only-uni-11000/batch33_sample_004_row0001.mp4" controls preload="metadata" playsinline muted></video>
       <div class="name">hk-only-uni-11000</div>
     </div>
     <div class="cell">
+      <div class="dd t">dynamic_degree: ✓ True</div>
       <video src="https://cdn.jsdelivr.net/gh/GoldmanXu/kling_formal@main/videos/ly_only_hpsv3_video/batch33_sample_004_row0001.mp4" controls preload="metadata" playsinline muted></video>
       <div class="name">ly_only_hpsv3_video</div>
     </div>
     <div class="cell">
+      <div class="dd t">dynamic_degree: ✓ True</div>
       <video src="https://cdn.jsdelivr.net/gh/GoldmanXu/kling_formal@main/videos/ly_video_vr_only/batch33_sample_004_row0001.mp4" controls preload="metadata" playsinline muted></video>
       <div class="name">ly_video_vr_only</div>
     </div>
@@ -393,18 +445,22 @@
   </div>
   <div class="grid">
     <div class="cell">
+      <div class="dd t">dynamic_degree: ✓ True</div>
       <video src="https://cdn.jsdelivr.net/gh/GoldmanXu/kling_formal@main/videos/base/batch33_sample_004_row0002.mp4" controls preload="metadata" playsinline muted></video>
       <div class="name">base</div>
     </div>
     <div class="cell">
+      <div class="dd t">dynamic_degree: ✓ True</div>
       <video src="https://cdn.jsdelivr.net/gh/GoldmanXu/kling_formal@main/videos/hk-only-uni-11000/batch33_sample_004_row0002.mp4" controls preload="metadata" playsinline muted></video>
       <div class="name">hk-only-uni-11000</div>
     </div>
     <div class="cell">
+      <div class="dd t">dynamic_degree: ✓ True</div>
       <video src="https://cdn.jsdelivr.net/gh/GoldmanXu/kling_formal@main/videos/ly_only_hpsv3_video/batch33_sample_004_row0002.mp4" controls preload="metadata" playsinline muted></video>
       <div class="name">ly_only_hpsv3_video</div>
     </div>
     <div class="cell">
+      <div class="dd t">dynamic_degree: ✓ True</div>
       <video src="https://cdn.jsdelivr.net/gh/GoldmanXu/kling_formal@main/videos/ly_video_vr_only/batch33_sample_004_row0002.mp4" controls preload="metadata" playsinline muted></video>
       <div class="name">ly_video_vr_only</div>
     </div>
@@ -424,18 +480,22 @@
   </div>
   <div class="grid">
     <div class="cell">
+      <div class="dd t">dynamic_degree: ✓ True</div>
       <video src="https://cdn.jsdelivr.net/gh/GoldmanXu/kling_formal@main/videos/base/batch33_sample_004_row0004.mp4" controls preload="metadata" playsinline muted></video>
       <div class="name">base</div>
     </div>
     <div class="cell">
+      <div class="dd t">dynamic_degree: ✓ True</div>
       <video src="https://cdn.jsdelivr.net/gh/GoldmanXu/kling_formal@main/videos/hk-only-uni-11000/batch33_sample_004_row0004.mp4" controls preload="metadata" playsinline muted></video>
       <div class="name">hk-only-uni-11000</div>
     </div>
     <div class="cell">
+      <div class="dd t">dynamic_degree: ✓ True</div>
       <video src="https://cdn.jsdelivr.net/gh/GoldmanXu/kling_formal@main/videos/ly_only_hpsv3_video/batch33_sample_004_row0004.mp4" controls preload="metadata" playsinline muted></video>
       <div class="name">ly_only_hpsv3_video</div>
     </div>
     <div class="cell">
+      <div class="dd t">dynamic_degree: ✓ True</div>
       <video src="https://cdn.jsdelivr.net/gh/GoldmanXu/kling_formal@main/videos/ly_video_vr_only/batch33_sample_004_row0004.mp4" controls preload="metadata" playsinline muted></video>
       <div class="name">ly_video_vr_only</div>
     </div>
@@ -455,18 +515,22 @@
   </div>
   <div class="grid">
     <div class="cell">
+      <div class="dd t">dynamic_degree: ✓ True</div>
       <video src="https://cdn.jsdelivr.net/gh/GoldmanXu/kling_formal@main/videos/base/batch33_sample_005_row0000.mp4" controls preload="metadata" playsinline muted></video>
       <div class="name">base</div>
     </div>
     <div class="cell">
+      <div class="dd t">dynamic_degree: ✓ True</div>
       <video src="https://cdn.jsdelivr.net/gh/GoldmanXu/kling_formal@main/videos/hk-only-uni-11000/batch33_sample_005_row0000.mp4" controls preload="metadata" playsinline muted></video>
       <div class="name">hk-only-uni-11000</div>
     </div>
     <div class="cell">
+      <div class="dd t">dynamic_degree: ✓ True</div>
       <video src="https://cdn.jsdelivr.net/gh/GoldmanXu/kling_formal@main/videos/ly_only_hpsv3_video/batch33_sample_005_row0000.mp4" controls preload="metadata" playsinline muted></video>
       <div class="name">ly_only_hpsv3_video</div>
     </div>
     <div class="cell">
+      <div class="dd t">dynamic_degree: ✓ True</div>
       <video src="https://cdn.jsdelivr.net/gh/GoldmanXu/kling_formal@main/videos/ly_video_vr_only/batch33_sample_005_row0000.mp4" controls preload="metadata" playsinline muted></video>
       <div class="name">ly_video_vr_only</div>
     </div>
@@ -486,18 +550,22 @@
   </div>
   <div class="grid">
     <div class="cell">
+      <div class="dd t">dynamic_degree: ✓ True</div>
       <video src="https://cdn.jsdelivr.net/gh/GoldmanXu/kling_formal@main/videos/base/batch33_sample_005_row0001.mp4" controls preload="metadata" playsinline muted></video>
       <div class="name">base</div>
     </div>
     <div class="cell">
+      <div class="dd t">dynamic_degree: ✓ True</div>
       <video src="https://cdn.jsdelivr.net/gh/GoldmanXu/kling_formal@main/videos/hk-only-uni-11000/batch33_sample_005_row0001.mp4" controls preload="metadata" playsinline muted></video>
       <div class="name">hk-only-uni-11000</div>
     </div>
     <div class="cell">
+      <div class="dd t">dynamic_degree: ✓ True</div>
       <video src="https://cdn.jsdelivr.net/gh/GoldmanXu/kling_formal@main/videos/ly_only_hpsv3_video/batch33_sample_005_row0001.mp4" controls preload="metadata" playsinline muted></video>
       <div class="name">ly_only_hpsv3_video</div>
     </div>
     <div class="cell">
+      <div class="dd t">dynamic_degree: ✓ True</div>
       <video src="https://cdn.jsdelivr.net/gh/GoldmanXu/kling_formal@main/videos/ly_video_vr_only/batch33_sample_005_row0001.mp4" controls preload="metadata" playsinline muted></video>
       <div class="name">ly_video_vr_only</div>
     </div>
@@ -517,18 +585,22 @@
   </div>
   <div class="grid">
     <div class="cell">
+      <div class="dd t">dynamic_degree: ✓ True</div>
       <video src="https://cdn.jsdelivr.net/gh/GoldmanXu/kling_formal@main/videos/base/batch33_sample_005_row0002.mp4" controls preload="metadata" playsinline muted></video>
       <div class="name">base</div>
     </div>
     <div class="cell">
+      <div class="dd t">dynamic_degree: ✓ True</div>
       <video src="https://cdn.jsdelivr.net/gh/GoldmanXu/kling_formal@main/videos/hk-only-uni-11000/batch33_sample_005_row0002.mp4" controls preload="metadata" playsinline muted></video>
       <div class="name">hk-only-uni-11000</div>
     </div>
     <div class="cell">
+      <div class="dd t">dynamic_degree: ✓ True</div>
       <video src="https://cdn.jsdelivr.net/gh/GoldmanXu/kling_formal@main/videos/ly_only_hpsv3_video/batch33_sample_005_row0002.mp4" controls preload="metadata" playsinline muted></video>
       <div class="name">ly_only_hpsv3_video</div>
     </div>
     <div class="cell">
+      <div class="dd t">dynamic_degree: ✓ True</div>
       <video src="https://cdn.jsdelivr.net/gh/GoldmanXu/kling_formal@main/videos/ly_video_vr_only/batch33_sample_005_row0002.mp4" controls preload="metadata" playsinline muted></video>
       <div class="name">ly_video_vr_only</div>
     </div>
@@ -548,18 +620,22 @@
   </div>
   <div class="grid">
     <div class="cell">
+      <div class="dd t">dynamic_degree: ✓ True</div>
       <video src="https://cdn.jsdelivr.net/gh/GoldmanXu/kling_formal@main/videos/base/batch33_sample_005_row0003.mp4" controls preload="metadata" playsinline muted></video>
       <div class="name">base</div>
     </div>
     <div class="cell">
+      <div class="dd f">dynamic_degree: ✗ False</div>
       <video src="https://cdn.jsdelivr.net/gh/GoldmanXu/kling_formal@main/videos/hk-only-uni-11000/batch33_sample_005_row0003.mp4" controls preload="metadata" playsinline muted></video>
       <div class="name">hk-only-uni-11000</div>
     </div>
     <div class="cell">
+      <div class="dd t">dynamic_degree: ✓ True</div>
       <video src="https://cdn.jsdelivr.net/gh/GoldmanXu/kling_formal@main/videos/ly_only_hpsv3_video/batch33_sample_005_row0003.mp4" controls preload="metadata" playsinline muted></video>
       <div class="name">ly_only_hpsv3_video</div>
     </div>
     <div class="cell">
+      <div class="dd f">dynamic_degree: ✗ False</div>
       <video src="https://cdn.jsdelivr.net/gh/GoldmanXu/kling_formal@main/videos/ly_video_vr_only/batch33_sample_005_row0003.mp4" controls preload="metadata" playsinline muted></video>
       <div class="name">ly_video_vr_only</div>
     </div>
@@ -579,18 +655,22 @@
   </div>
   <div class="grid">
     <div class="cell">
+      <div class="dd t">dynamic_degree: ✓ True</div>
       <video src="https://cdn.jsdelivr.net/gh/GoldmanXu/kling_formal@main/videos/base/batch33_sample_005_row0004.mp4" controls preload="metadata" playsinline muted></video>
       <div class="name">base</div>
     </div>
     <div class="cell">
+      <div class="dd t">dynamic_degree: ✓ True</div>
       <video src="https://cdn.jsdelivr.net/gh/GoldmanXu/kling_formal@main/videos/hk-only-uni-11000/batch33_sample_005_row0004.mp4" controls preload="metadata" playsinline muted></video>
       <div class="name">hk-only-uni-11000</div>
     </div>
     <div class="cell">
+      <div class="dd t">dynamic_degree: ✓ True</div>
       <video src="https://cdn.jsdelivr.net/gh/GoldmanXu/kling_formal@main/videos/ly_only_hpsv3_video/batch33_sample_005_row0004.mp4" controls preload="metadata" playsinline muted></video>
       <div class="name">ly_only_hpsv3_video</div>
     </div>
     <div class="cell">
+      <div class="dd t">dynamic_degree: ✓ True</div>
       <video src="https://cdn.jsdelivr.net/gh/GoldmanXu/kling_formal@main/videos/ly_video_vr_only/batch33_sample_005_row0004.mp4" controls preload="metadata" playsinline muted></video>
       <div class="name">ly_video_vr_only</div>
     </div>
@@ -610,18 +690,22 @@
   </div>
   <div class="grid">
     <div class="cell">
+      <div class="dd t">dynamic_degree: ✓ True</div>
       <video src="https://cdn.jsdelivr.net/gh/GoldmanXu/kling_formal@main/videos/base/batch33_sample_006_row0000.mp4" controls preload="metadata" playsinline muted></video>
       <div class="name">base</div>
     </div>
     <div class="cell">
+      <div class="dd t">dynamic_degree: ✓ True</div>
       <video src="https://cdn.jsdelivr.net/gh/GoldmanXu/kling_formal@main/videos/hk-only-uni-11000/batch33_sample_006_row0000.mp4" controls preload="metadata" playsinline muted></video>
       <div class="name">hk-only-uni-11000</div>
     </div>
     <div class="cell">
+      <div class="dd t">dynamic_degree: ✓ True</div>
       <video src="https://cdn.jsdelivr.net/gh/GoldmanXu/kling_formal@main/videos/ly_only_hpsv3_video/batch33_sample_006_row0000.mp4" controls preload="metadata" playsinline muted></video>
       <div class="name">ly_only_hpsv3_video</div>
     </div>
     <div class="cell">
+      <div class="dd t">dynamic_degree: ✓ True</div>
       <video src="https://cdn.jsdelivr.net/gh/GoldmanXu/kling_formal@main/videos/ly_video_vr_only/batch33_sample_006_row0000.mp4" controls preload="metadata" playsinline muted></video>
       <div class="name">ly_video_vr_only</div>
     </div>
@@ -641,18 +725,22 @@
   </div>
   <div class="grid">
     <div class="cell">
+      <div class="dd f">dynamic_degree: ✗ False</div>
       <video src="https://cdn.jsdelivr.net/gh/GoldmanXu/kling_formal@main/videos/base/batch33_sample_006_row0001.mp4" controls preload="metadata" playsinline muted></video>
       <div class="name">base</div>
     </div>
     <div class="cell">
+      <div class="dd f">dynamic_degree: ✗ False</div>
       <video src="https://cdn.jsdelivr.net/gh/GoldmanXu/kling_formal@main/videos/hk-only-uni-11000/batch33_sample_006_row0001.mp4" controls preload="metadata" playsinline muted></video>
       <div class="name">hk-only-uni-11000</div>
     </div>
     <div class="cell">
+      <div class="dd t">dynamic_degree: ✓ True</div>
       <video src="https://cdn.jsdelivr.net/gh/GoldmanXu/kling_formal@main/videos/ly_only_hpsv3_video/batch33_sample_006_row0001.mp4" controls preload="metadata" playsinline muted></video>
       <div class="name">ly_only_hpsv3_video</div>
     </div>
     <div class="cell">
+      <div class="dd t">dynamic_degree: ✓ True</div>
       <video src="https://cdn.jsdelivr.net/gh/GoldmanXu/kling_formal@main/videos/ly_video_vr_only/batch33_sample_006_row0001.mp4" controls preload="metadata" playsinline muted></video>
       <div class="name">ly_video_vr_only</div>
     </div>
@@ -672,18 +760,22 @@
   </div>
   <div class="grid">
     <div class="cell">
+      <div class="dd f">dynamic_degree: ✗ False</div>
       <video src="https://cdn.jsdelivr.net/gh/GoldmanXu/kling_formal@main/videos/base/batch33_sample_006_row0002.mp4" controls preload="metadata" playsinline muted></video>
       <div class="name">base</div>
     </div>
     <div class="cell">
+      <div class="dd t">dynamic_degree: ✓ True</div>
       <video src="https://cdn.jsdelivr.net/gh/GoldmanXu/kling_formal@main/videos/hk-only-uni-11000/batch33_sample_006_row0002.mp4" controls preload="metadata" playsinline muted></video>
       <div class="name">hk-only-uni-11000</div>
     </div>
     <div class="cell">
+      <div class="dd t">dynamic_degree: ✓ True</div>
       <video src="https://cdn.jsdelivr.net/gh/GoldmanXu/kling_formal@main/videos/ly_only_hpsv3_video/batch33_sample_006_row0002.mp4" controls preload="metadata" playsinline muted></video>
       <div class="name">ly_only_hpsv3_video</div>
     </div>
     <div class="cell">
+      <div class="dd t">dynamic_degree: ✓ True</div>
       <video src="https://cdn.jsdelivr.net/gh/GoldmanXu/kling_formal@main/videos/ly_video_vr_only/batch33_sample_006_row0002.mp4" controls preload="metadata" playsinline muted></video>
       <div class="name">ly_video_vr_only</div>
     </div>
@@ -703,18 +795,22 @@
   </div>
   <div class="grid">
     <div class="cell">
+      <div class="dd t">dynamic_degree: ✓ True</div>
       <video src="https://cdn.jsdelivr.net/gh/GoldmanXu/kling_formal@main/videos/base/batch33_sample_006_row0004.mp4" controls preload="metadata" playsinline muted></video>
       <div class="name">base</div>
     </div>
     <div class="cell">
+      <div class="dd t">dynamic_degree: ✓ True</div>
       <video src="https://cdn.jsdelivr.net/gh/GoldmanXu/kling_formal@main/videos/hk-only-uni-11000/batch33_sample_006_row0004.mp4" controls preload="metadata" playsinline muted></video>
       <div class="name">hk-only-uni-11000</div>
     </div>
     <div class="cell">
+      <div class="dd t">dynamic_degree: ✓ True</div>
       <video src="https://cdn.jsdelivr.net/gh/GoldmanXu/kling_formal@main/videos/ly_only_hpsv3_video/batch33_sample_006_row0004.mp4" controls preload="metadata" playsinline muted></video>
       <div class="name">ly_only_hpsv3_video</div>
     </div>
     <div class="cell">
+      <div class="dd t">dynamic_degree: ✓ True</div>
       <video src="https://cdn.jsdelivr.net/gh/GoldmanXu/kling_formal@main/videos/ly_video_vr_only/batch33_sample_006_row0004.mp4" controls preload="metadata" playsinline muted></video>
       <div class="name">ly_video_vr_only</div>
     </div>
@@ -734,18 +830,22 @@
   </div>
   <div class="grid">
     <div class="cell">
+      <div class="dd t">dynamic_degree: ✓ True</div>
       <video src="https://cdn.jsdelivr.net/gh/GoldmanXu/kling_formal@main/videos/base/batch33_sample_007_row0000.mp4" controls preload="metadata" playsinline muted></video>
       <div class="name">base</div>
     </div>
     <div class="cell">
+      <div class="dd t">dynamic_degree: ✓ True</div>
       <video src="https://cdn.jsdelivr.net/gh/GoldmanXu/kling_formal@main/videos/hk-only-uni-11000/batch33_sample_007_row0000.mp4" controls preload="metadata" playsinline muted></video>
       <div class="name">hk-only-uni-11000</div>
     </div>
     <div class="cell">
+      <div class="dd t">dynamic_degree: ✓ True</div>
       <video src="https://cdn.jsdelivr.net/gh/GoldmanXu/kling_formal@main/videos/ly_only_hpsv3_video/batch33_sample_007_row0000.mp4" controls preload="metadata" playsinline muted></video>
       <div class="name">ly_only_hpsv3_video</div>
     </div>
     <div class="cell">
+      <div class="dd t">dynamic_degree: ✓ True</div>
       <video src="https://cdn.jsdelivr.net/gh/GoldmanXu/kling_formal@main/videos/ly_video_vr_only/batch33_sample_007_row0000.mp4" controls preload="metadata" playsinline muted></video>
       <div class="name">ly_video_vr_only</div>
     </div>
@@ -765,18 +865,22 @@
   </div>
   <div class="grid">
     <div class="cell">
+      <div class="dd t">dynamic_degree: ✓ True</div>
       <video src="https://cdn.jsdelivr.net/gh/GoldmanXu/kling_formal@main/videos/base/batch33_sample_007_row0001.mp4" controls preload="metadata" playsinline muted></video>
       <div class="name">base</div>
     </div>
     <div class="cell">
+      <div class="dd t">dynamic_degree: ✓ True</div>
       <video src="https://cdn.jsdelivr.net/gh/GoldmanXu/kling_formal@main/videos/hk-only-uni-11000/batch33_sample_007_row0001.mp4" controls preload="metadata" playsinline muted></video>
       <div class="name">hk-only-uni-11000</div>
     </div>
     <div class="cell">
+      <div class="dd t">dynamic_degree: ✓ True</div>
       <video src="https://cdn.jsdelivr.net/gh/GoldmanXu/kling_formal@main/videos/ly_only_hpsv3_video/batch33_sample_007_row0001.mp4" controls preload="metadata" playsinline muted></video>
       <div class="name">ly_only_hpsv3_video</div>
     </div>
     <div class="cell">
+      <div class="dd t">dynamic_degree: ✓ True</div>
       <video src="https://cdn.jsdelivr.net/gh/GoldmanXu/kling_formal@main/videos/ly_video_vr_only/batch33_sample_007_row0001.mp4" controls preload="metadata" playsinline muted></video>
       <div class="name">ly_video_vr_only</div>
     </div>
@@ -796,18 +900,22 @@
   </div>
   <div class="grid">
     <div class="cell">
+      <div class="dd t">dynamic_degree: ✓ True</div>
       <video src="https://cdn.jsdelivr.net/gh/GoldmanXu/kling_formal@main/videos/base/batch33_sample_007_row0002.mp4" controls preload="metadata" playsinline muted></video>
       <div class="name">base</div>
     </div>
     <div class="cell">
+      <div class="dd t">dynamic_degree: ✓ True</div>
       <video src="https://cdn.jsdelivr.net/gh/GoldmanXu/kling_formal@main/videos/hk-only-uni-11000/batch33_sample_007_row0002.mp4" controls preload="metadata" playsinline muted></video>
       <div class="name">hk-only-uni-11000</div>
     </div>
     <div class="cell">
+      <div class="dd t">dynamic_degree: ✓ True</div>
       <video src="https://cdn.jsdelivr.net/gh/GoldmanXu/kling_formal@main/videos/ly_only_hpsv3_video/batch33_sample_007_row0002.mp4" controls preload="metadata" playsinline muted></video>
       <div class="name">ly_only_hpsv3_video</div>
     </div>
     <div class="cell">
+      <div class="dd t">dynamic_degree: ✓ True</div>
       <video src="https://cdn.jsdelivr.net/gh/GoldmanXu/kling_formal@main/videos/ly_video_vr_only/batch33_sample_007_row0002.mp4" controls preload="metadata" playsinline muted></video>
       <div class="name">ly_video_vr_only</div>
     </div>
@@ -827,18 +935,22 @@
   </div>
   <div class="grid">
     <div class="cell">
+      <div class="dd t">dynamic_degree: ✓ True</div>
       <video src="https://cdn.jsdelivr.net/gh/GoldmanXu/kling_formal@main/videos/base/batch33_sample_007_row0003.mp4" controls preload="metadata" playsinline muted></video>
       <div class="name">base</div>
     </div>
     <div class="cell">
+      <div class="dd t">dynamic_degree: ✓ True</div>
       <video src="https://cdn.jsdelivr.net/gh/GoldmanXu/kling_formal@main/videos/hk-only-uni-11000/batch33_sample_007_row0003.mp4" controls preload="metadata" playsinline muted></video>
       <div class="name">hk-only-uni-11000</div>
     </div>
     <div class="cell">
+      <div class="dd t">dynamic_degree: ✓ True</div>
       <video src="https://cdn.jsdelivr.net/gh/GoldmanXu/kling_formal@main/videos/ly_only_hpsv3_video/batch33_sample_007_row0003.mp4" controls preload="metadata" playsinline muted></video>
       <div class="name">ly_only_hpsv3_video</div>
     </div>
     <div class="cell">
+      <div class="dd t">dynamic_degree: ✓ True</div>
       <video src="https://cdn.jsdelivr.net/gh/GoldmanXu/kling_formal@main/videos/ly_video_vr_only/batch33_sample_007_row0003.mp4" controls preload="metadata" playsinline muted></video>
       <div class="name">ly_video_vr_only</div>
     </div>
@@ -858,18 +970,22 @@
   </div>
   <div class="grid">
     <div class="cell">
+      <div class="dd t">dynamic_degree: ✓ True</div>
       <video src="https://cdn.jsdelivr.net/gh/GoldmanXu/kling_formal@main/videos/base/batch33_sample_007_row0004.mp4" controls preload="metadata" playsinline muted></video>
       <div class="name">base</div>
     </div>
     <div class="cell">
+      <div class="dd t">dynamic_degree: ✓ True</div>
       <video src="https://cdn.jsdelivr.net/gh/GoldmanXu/kling_formal@main/videos/hk-only-uni-11000/batch33_sample_007_row0004.mp4" controls preload="metadata" playsinline muted></video>
       <div class="name">hk-only-uni-11000</div>
     </div>
     <div class="cell">
+      <div class="dd t">dynamic_degree: ✓ True</div>
       <video src="https://cdn.jsdelivr.net/gh/GoldmanXu/kling_formal@main/videos/ly_only_hpsv3_video/batch33_sample_007_row0004.mp4" controls preload="metadata" playsinline muted></video>
       <div class="name">ly_only_hpsv3_video</div>
     </div>
     <div class="cell">
+      <div class="dd t">dynamic_degree: ✓ True</div>
       <video src="https://cdn.jsdelivr.net/gh/GoldmanXu/kling_formal@main/videos/ly_video_vr_only/batch33_sample_007_row0004.mp4" controls preload="metadata" playsinline muted></video>
       <div class="name">ly_video_vr_only</div>
     </div>
@@ -889,18 +1005,22 @@
   </div>
   <div class="grid">
     <div class="cell">
+      <div class="dd t">dynamic_degree: ✓ True</div>
       <video src="https://cdn.jsdelivr.net/gh/GoldmanXu/kling_formal@main/videos/base/batch33_sample_008_row0000.mp4" controls preload="metadata" playsinline muted></video>
       <div class="name">base</div>
     </div>
     <div class="cell">
+      <div class="dd t">dynamic_degree: ✓ True</div>
       <video src="https://cdn.jsdelivr.net/gh/GoldmanXu/kling_formal@main/videos/hk-only-uni-11000/batch33_sample_008_row0000.mp4" controls preload="metadata" playsinline muted></video>
       <div class="name">hk-only-uni-11000</div>
     </div>
     <div class="cell">
+      <div class="dd t">dynamic_degree: ✓ True</div>
       <video src="https://cdn.jsdelivr.net/gh/GoldmanXu/kling_formal@main/videos/ly_only_hpsv3_video/batch33_sample_008_row0000.mp4" controls preload="metadata" playsinline muted></video>
       <div class="name">ly_only_hpsv3_video</div>
     </div>
     <div class="cell">
+      <div class="dd t">dynamic_degree: ✓ True</div>
       <video src="https://cdn.jsdelivr.net/gh/GoldmanXu/kling_formal@main/videos/ly_video_vr_only/batch33_sample_008_row0000.mp4" controls preload="metadata" playsinline muted></video>
       <div class="name">ly_video_vr_only</div>
     </div>
@@ -920,18 +1040,22 @@
   </div>
   <div class="grid">
     <div class="cell">
+      <div class="dd f">dynamic_degree: ✗ False</div>
       <video src="https://cdn.jsdelivr.net/gh/GoldmanXu/kling_formal@main/videos/base/batch33_sample_008_row0001.mp4" controls preload="metadata" playsinline muted></video>
       <div class="name">base</div>
     </div>
     <div class="cell">
+      <div class="dd f">dynamic_degree: ✗ False</div>
       <video src="https://cdn.jsdelivr.net/gh/GoldmanXu/kling_formal@main/videos/hk-only-uni-11000/batch33_sample_008_row0001.mp4" controls preload="metadata" playsinline muted></video>
       <div class="name">hk-only-uni-11000</div>
     </div>
     <div class="cell">
+      <div class="dd f">dynamic_degree: ✗ False</div>
       <video src="https://cdn.jsdelivr.net/gh/GoldmanXu/kling_formal@main/videos/ly_only_hpsv3_video/batch33_sample_008_row0001.mp4" controls preload="metadata" playsinline muted></video>
       <div class="name">ly_only_hpsv3_video</div>
     </div>
     <div class="cell">
+      <div class="dd f">dynamic_degree: ✗ False</div>
       <video src="https://cdn.jsdelivr.net/gh/GoldmanXu/kling_formal@main/videos/ly_video_vr_only/batch33_sample_008_row0001.mp4" controls preload="metadata" playsinline muted></video>
       <div class="name">ly_video_vr_only</div>
     </div>
@@ -951,18 +1075,22 @@
   </div>
   <div class="grid">
     <div class="cell">
+      <div class="dd t">dynamic_degree: ✓ True</div>
       <video src="https://cdn.jsdelivr.net/gh/GoldmanXu/kling_formal@main/videos/base/batch33_sample_008_row0002.mp4" controls preload="metadata" playsinline muted></video>
       <div class="name">base</div>
     </div>
     <div class="cell">
+      <div class="dd t">dynamic_degree: ✓ True</div>
       <video src="https://cdn.jsdelivr.net/gh/GoldmanXu/kling_formal@main/videos/hk-only-uni-11000/batch33_sample_008_row0002.mp4" controls preload="metadata" playsinline muted></video>
       <div class="name">hk-only-uni-11000</div>
     </div>
     <div class="cell">
+      <div class="dd t">dynamic_degree: ✓ True</div>
       <video src="https://cdn.jsdelivr.net/gh/GoldmanXu/kling_formal@main/videos/ly_only_hpsv3_video/batch33_sample_008_row0002.mp4" controls preload="metadata" playsinline muted></video>
       <div class="name">ly_only_hpsv3_video</div>
     </div>
     <div class="cell">
+      <div class="dd t">dynamic_degree: ✓ True</div>
       <video src="https://cdn.jsdelivr.net/gh/GoldmanXu/kling_formal@main/videos/ly_video_vr_only/batch33_sample_008_row0002.mp4" controls preload="metadata" playsinline muted></video>
       <div class="name">ly_video_vr_only</div>
     </div>
@@ -982,18 +1110,22 @@
   </div>
   <div class="grid">
     <div class="cell">
+      <div class="dd t">dynamic_degree: ✓ True</div>
       <video src="https://cdn.jsdelivr.net/gh/GoldmanXu/kling_formal@main/videos/base/batch33_sample_008_row0003.mp4" controls preload="metadata" playsinline muted></video>
       <div class="name">base</div>
     </div>
     <div class="cell">
+      <div class="dd t">dynamic_degree: ✓ True</div>
       <video src="https://cdn.jsdelivr.net/gh/GoldmanXu/kling_formal@main/videos/hk-only-uni-11000/batch33_sample_008_row0003.mp4" controls preload="metadata" playsinline muted></video>
       <div class="name">hk-only-uni-11000</div>
     </div>
     <div class="cell">
+      <div class="dd t">dynamic_degree: ✓ True</div>
       <video src="https://cdn.jsdelivr.net/gh/GoldmanXu/kling_formal@main/videos/ly_only_hpsv3_video/batch33_sample_008_row0003.mp4" controls preload="metadata" playsinline muted></video>
       <div class="name">ly_only_hpsv3_video</div>
     </div>
     <div class="cell">
+      <div class="dd t">dynamic_degree: ✓ True</div>
       <video src="https://cdn.jsdelivr.net/gh/GoldmanXu/kling_formal@main/videos/ly_video_vr_only/batch33_sample_008_row0003.mp4" controls preload="metadata" playsinline muted></video>
       <div class="name">ly_video_vr_only</div>
     </div>
@@ -1013,18 +1145,22 @@
   </div>
   <div class="grid">
     <div class="cell">
+      <div class="dd f">dynamic_degree: ✗ False</div>
       <video src="https://cdn.jsdelivr.net/gh/GoldmanXu/kling_formal@main/videos/base/batch33_sample_008_row0004.mp4" controls preload="metadata" playsinline muted></video>
       <div class="name">base</div>
     </div>
     <div class="cell">
+      <div class="dd t">dynamic_degree: ✓ True</div>
       <video src="https://cdn.jsdelivr.net/gh/GoldmanXu/kling_formal@main/videos/hk-only-uni-11000/batch33_sample_008_row0004.mp4" controls preload="metadata" playsinline muted></video>
       <div class="name">hk-only-uni-11000</div>
     </div>
     <div class="cell">
+      <div class="dd t">dynamic_degree: ✓ True</div>
       <video src="https://cdn.jsdelivr.net/gh/GoldmanXu/kling_formal@main/videos/ly_only_hpsv3_video/batch33_sample_008_row0004.mp4" controls preload="metadata" playsinline muted></video>
       <div class="name">ly_only_hpsv3_video</div>
     </div>
     <div class="cell">
+      <div class="dd t">dynamic_degree: ✓ True</div>
       <video src="https://cdn.jsdelivr.net/gh/GoldmanXu/kling_formal@main/videos/ly_video_vr_only/batch33_sample_008_row0004.mp4" controls preload="metadata" playsinline muted></video>
       <div class="name">ly_video_vr_only</div>
     </div>
@@ -1044,18 +1180,22 @@
   </div>
   <div class="grid">
     <div class="cell">
+      <div class="dd t">dynamic_degree: ✓ True</div>
       <video src="https://cdn.jsdelivr.net/gh/GoldmanXu/kling_formal@main/videos/base/batch33_sample_009_row0000.mp4" controls preload="metadata" playsinline muted></video>
       <div class="name">base</div>
     </div>
     <div class="cell">
+      <div class="dd t">dynamic_degree: ✓ True</div>
       <video src="https://cdn.jsdelivr.net/gh/GoldmanXu/kling_formal@main/videos/hk-only-uni-11000/batch33_sample_009_row0000.mp4" controls preload="metadata" playsinline muted></video>
       <div class="name">hk-only-uni-11000</div>
     </div>
     <div class="cell">
+      <div class="dd t">dynamic_degree: ✓ True</div>
       <video src="https://cdn.jsdelivr.net/gh/GoldmanXu/kling_formal@main/videos/ly_only_hpsv3_video/batch33_sample_009_row0000.mp4" controls preload="metadata" playsinline muted></video>
       <div class="name">ly_only_hpsv3_video</div>
     </div>
     <div class="cell">
+      <div class="dd t">dynamic_degree: ✓ True</div>
       <video src="https://cdn.jsdelivr.net/gh/GoldmanXu/kling_formal@main/videos/ly_video_vr_only/batch33_sample_009_row0000.mp4" controls preload="metadata" playsinline muted></video>
       <div class="name">ly_video_vr_only</div>
     </div>
@@ -1075,18 +1215,22 @@
   </div>
   <div class="grid">
     <div class="cell">
+      <div class="dd t">dynamic_degree: ✓ True</div>
       <video src="https://cdn.jsdelivr.net/gh/GoldmanXu/kling_formal@main/videos/base/batch33_sample_009_row0001.mp4" controls preload="metadata" playsinline muted></video>
       <div class="name">base</div>
     </div>
     <div class="cell">
+      <div class="dd t">dynamic_degree: ✓ True</div>
       <video src="https://cdn.jsdelivr.net/gh/GoldmanXu/kling_formal@main/videos/hk-only-uni-11000/batch33_sample_009_row0001.mp4" controls preload="metadata" playsinline muted></video>
       <div class="name">hk-only-uni-11000</div>
     </div>
     <div class="cell">
+      <div class="dd t">dynamic_degree: ✓ True</div>
       <video src="https://cdn.jsdelivr.net/gh/GoldmanXu/kling_formal@main/videos/ly_only_hpsv3_video/batch33_sample_009_row0001.mp4" controls preload="metadata" playsinline muted></video>
       <div class="name">ly_only_hpsv3_video</div>
     </div>
     <div class="cell">
+      <div class="dd t">dynamic_degree: ✓ True</div>
       <video src="https://cdn.jsdelivr.net/gh/GoldmanXu/kling_formal@main/videos/ly_video_vr_only/batch33_sample_009_row0001.mp4" controls preload="metadata" playsinline muted></video>
       <div class="name">ly_video_vr_only</div>
     </div>
@@ -1106,18 +1250,22 @@
   </div>
   <div class="grid">
     <div class="cell">
+      <div class="dd t">dynamic_degree: ✓ True</div>
       <video src="https://cdn.jsdelivr.net/gh/GoldmanXu/kling_formal@main/videos/base/batch33_sample_009_row0002.mp4" controls preload="metadata" playsinline muted></video>
       <div class="name">base</div>
     </div>
     <div class="cell">
+      <div class="dd t">dynamic_degree: ✓ True</div>
       <video src="https://cdn.jsdelivr.net/gh/GoldmanXu/kling_formal@main/videos/hk-only-uni-11000/batch33_sample_009_row0002.mp4" controls preload="metadata" playsinline muted></video>
       <div class="name">hk-only-uni-11000</div>
     </div>
     <div class="cell">
+      <div class="dd t">dynamic_degree: ✓ True</div>
       <video src="https://cdn.jsdelivr.net/gh/GoldmanXu/kling_formal@main/videos/ly_only_hpsv3_video/batch33_sample_009_row0002.mp4" controls preload="metadata" playsinline muted></video>
       <div class="name">ly_only_hpsv3_video</div>
     </div>
     <div class="cell">
+      <div class="dd t">dynamic_degree: ✓ True</div>
       <video src="https://cdn.jsdelivr.net/gh/GoldmanXu/kling_formal@main/videos/ly_video_vr_only/batch33_sample_009_row0002.mp4" controls preload="metadata" playsinline muted></video>
       <div class="name">ly_video_vr_only</div>
     </div>
@@ -1137,18 +1285,22 @@
   </div>
   <div class="grid">
     <div class="cell">
+      <div class="dd f">dynamic_degree: ✗ False</div>
       <video src="https://cdn.jsdelivr.net/gh/GoldmanXu/kling_formal@main/videos/base/batch33_sample_009_row0003.mp4" controls preload="metadata" playsinline muted></video>
       <div class="name">base</div>
     </div>
     <div class="cell">
+      <div class="dd f">dynamic_degree: ✗ False</div>
       <video src="https://cdn.jsdelivr.net/gh/GoldmanXu/kling_formal@main/videos/hk-only-uni-11000/batch33_sample_009_row0003.mp4" controls preload="metadata" playsinline muted></video>
       <div class="name">hk-only-uni-11000</div>
     </div>
     <div class="cell">
+      <div class="dd t">dynamic_degree: ✓ True</div>
       <video src="https://cdn.jsdelivr.net/gh/GoldmanXu/kling_formal@main/videos/ly_only_hpsv3_video/batch33_sample_009_row0003.mp4" controls preload="metadata" playsinline muted></video>
       <div class="name">ly_only_hpsv3_video</div>
     </div>
     <div class="cell">
+      <div class="dd t">dynamic_degree: ✓ True</div>
       <video src="https://cdn.jsdelivr.net/gh/GoldmanXu/kling_formal@main/videos/ly_video_vr_only/batch33_sample_009_row0003.mp4" controls preload="metadata" playsinline muted></video>
       <div class="name">ly_video_vr_only</div>
     </div>
@@ -1168,18 +1320,22 @@
   </div>
   <div class="grid">
     <div class="cell">
+      <div class="dd t">dynamic_degree: ✓ True</div>
       <video src="https://cdn.jsdelivr.net/gh/GoldmanXu/kling_formal@main/videos/base/batch33_sample_009_row0004.mp4" controls preload="metadata" playsinline muted></video>
       <div class="name">base</div>
     </div>
     <div class="cell">
+      <div class="dd t">dynamic_degree: ✓ True</div>
       <video src="https://cdn.jsdelivr.net/gh/GoldmanXu/kling_formal@main/videos/hk-only-uni-11000/batch33_sample_009_row0004.mp4" controls preload="metadata" playsinline muted></video>
       <div class="name">hk-only-uni-11000</div>
     </div>
     <div class="cell">
+      <div class="dd t">dynamic_degree: ✓ True</div>
       <video src="https://cdn.jsdelivr.net/gh/GoldmanXu/kling_formal@main/videos/ly_only_hpsv3_video/batch33_sample_009_row0004.mp4" controls preload="metadata" playsinline muted></video>
       <div class="name">ly_only_hpsv3_video</div>
     </div>
     <div class="cell">
+      <div class="dd t">dynamic_degree: ✓ True</div>
       <video src="https://cdn.jsdelivr.net/gh/GoldmanXu/kling_formal@main/videos/ly_video_vr_only/batch33_sample_009_row0004.mp4" controls preload="metadata" playsinline muted></video>
       <div class="name">ly_video_vr_only</div>
     </div>
@@ -1199,18 +1355,22 @@
   </div>
   <div class="grid">
     <div class="cell">
+      <div class="dd t">dynamic_degree: ✓ True</div>
       <video src="https://cdn.jsdelivr.net/gh/GoldmanXu/kling_formal@main/videos/base/batch33_sample_010_row0000.mp4" controls preload="metadata" playsinline muted></video>
       <div class="name">base</div>
     </div>
     <div class="cell">
+      <div class="dd t">dynamic_degree: ✓ True</div>
       <video src="https://cdn.jsdelivr.net/gh/GoldmanXu/kling_formal@main/videos/hk-only-uni-11000/batch33_sample_010_row0000.mp4" controls preload="metadata" playsinline muted></video>
       <div class="name">hk-only-uni-11000</div>
     </div>
     <div class="cell">
+      <div class="dd t">dynamic_degree: ✓ True</div>
       <video src="https://cdn.jsdelivr.net/gh/GoldmanXu/kling_formal@main/videos/ly_only_hpsv3_video/batch33_sample_010_row0000.mp4" controls preload="metadata" playsinline muted></video>
       <div class="name">ly_only_hpsv3_video</div>
     </div>
     <div class="cell">
+      <div class="dd t">dynamic_degree: ✓ True</div>
       <video src="https://cdn.jsdelivr.net/gh/GoldmanXu/kling_formal@main/videos/ly_video_vr_only/batch33_sample_010_row0000.mp4" controls preload="metadata" playsinline muted></video>
       <div class="name">ly_video_vr_only</div>
     </div>
@@ -1230,18 +1390,22 @@
   </div>
   <div class="grid">
     <div class="cell">
+      <div class="dd f">dynamic_degree: ✗ False</div>
       <video src="https://cdn.jsdelivr.net/gh/GoldmanXu/kling_formal@main/videos/base/batch33_sample_010_row0002.mp4" controls preload="metadata" playsinline muted></video>
       <div class="name">base</div>
     </div>
     <div class="cell">
+      <div class="dd t">dynamic_degree: ✓ True</div>
       <video src="https://cdn.jsdelivr.net/gh/GoldmanXu/kling_formal@main/videos/hk-only-uni-11000/batch33_sample_010_row0002.mp4" controls preload="metadata" playsinline muted></video>
       <div class="name">hk-only-uni-11000</div>
     </div>
     <div class="cell">
+      <div class="dd t">dynamic_degree: ✓ True</div>
       <video src="https://cdn.jsdelivr.net/gh/GoldmanXu/kling_formal@main/videos/ly_only_hpsv3_video/batch33_sample_010_row0002.mp4" controls preload="metadata" playsinline muted></video>
       <div class="name">ly_only_hpsv3_video</div>
     </div>
     <div class="cell">
+      <div class="dd t">dynamic_degree: ✓ True</div>
       <video src="https://cdn.jsdelivr.net/gh/GoldmanXu/kling_formal@main/videos/ly_video_vr_only/batch33_sample_010_row0002.mp4" controls preload="metadata" playsinline muted></video>
       <div class="name">ly_video_vr_only</div>
     </div>
@@ -1261,18 +1425,22 @@
   </div>
   <div class="grid">
     <div class="cell">
+      <div class="dd t">dynamic_degree: ✓ True</div>
       <video src="https://cdn.jsdelivr.net/gh/GoldmanXu/kling_formal@main/videos/base/batch33_sample_010_row0003.mp4" controls preload="metadata" playsinline muted></video>
       <div class="name">base</div>
     </div>
     <div class="cell">
+      <div class="dd t">dynamic_degree: ✓ True</div>
       <video src="https://cdn.jsdelivr.net/gh/GoldmanXu/kling_formal@main/videos/hk-only-uni-11000/batch33_sample_010_row0003.mp4" controls preload="metadata" playsinline muted></video>
       <div class="name">hk-only-uni-11000</div>
     </div>
     <div class="cell">
+      <div class="dd t">dynamic_degree: ✓ True</div>
       <video src="https://cdn.jsdelivr.net/gh/GoldmanXu/kling_formal@main/videos/ly_only_hpsv3_video/batch33_sample_010_row0003.mp4" controls preload="metadata" playsinline muted></video>
       <div class="name">ly_only_hpsv3_video</div>
     </div>
     <div class="cell">
+      <div class="dd t">dynamic_degree: ✓ True</div>
       <video src="https://cdn.jsdelivr.net/gh/GoldmanXu/kling_formal@main/videos/ly_video_vr_only/batch33_sample_010_row0003.mp4" controls preload="metadata" playsinline muted></video>
       <div class="name">ly_video_vr_only</div>
     </div>
@@ -1292,18 +1460,22 @@
   </div>
   <div class="grid">
     <div class="cell">
+      <div class="dd t">dynamic_degree: ✓ True</div>
       <video src="https://cdn.jsdelivr.net/gh/GoldmanXu/kling_formal@main/videos/base/batch33_sample_010_row0004.mp4" controls preload="metadata" playsinline muted></video>
       <div class="name">base</div>
     </div>
     <div class="cell">
+      <div class="dd t">dynamic_degree: ✓ True</div>
       <video src="https://cdn.jsdelivr.net/gh/GoldmanXu/kling_formal@main/videos/hk-only-uni-11000/batch33_sample_010_row0004.mp4" controls preload="metadata" playsinline muted></video>
       <div class="name">hk-only-uni-11000</div>
     </div>
     <div class="cell">
+      <div class="dd t">dynamic_degree: ✓ True</div>
       <video src="https://cdn.jsdelivr.net/gh/GoldmanXu/kling_formal@main/videos/ly_only_hpsv3_video/batch33_sample_010_row0004.mp4" controls preload="metadata" playsinline muted></video>
       <div class="name">ly_only_hpsv3_video</div>
     </div>
     <div class="cell">
+      <div class="dd t">dynamic_degree: ✓ True</div>
       <video src="https://cdn.jsdelivr.net/gh/GoldmanXu/kling_formal@main/videos/ly_video_vr_only/batch33_sample_010_row0004.mp4" controls preload="metadata" playsinline muted></video>
       <div class="name">ly_video_vr_only</div>
     </div>
@@ -1323,18 +1495,22 @@
   </div>
   <div class="grid">
     <div class="cell">
+      <div class="dd t">dynamic_degree: ✓ True</div>
       <video src="https://cdn.jsdelivr.net/gh/GoldmanXu/kling_formal@main/videos/base/batch33_sample_011_row0000.mp4" controls preload="metadata" playsinline muted></video>
       <div class="name">base</div>
     </div>
     <div class="cell">
+      <div class="dd t">dynamic_degree: ✓ True</div>
       <video src="https://cdn.jsdelivr.net/gh/GoldmanXu/kling_formal@main/videos/hk-only-uni-11000/batch33_sample_011_row0000.mp4" controls preload="metadata" playsinline muted></video>
       <div class="name">hk-only-uni-11000</div>
     </div>
     <div class="cell">
+      <div class="dd t">dynamic_degree: ✓ True</div>
       <video src="https://cdn.jsdelivr.net/gh/GoldmanXu/kling_formal@main/videos/ly_only_hpsv3_video/batch33_sample_011_row0000.mp4" controls preload="metadata" playsinline muted></video>
       <div class="name">ly_only_hpsv3_video</div>
     </div>
     <div class="cell">
+      <div class="dd t">dynamic_degree: ✓ True</div>
       <video src="https://cdn.jsdelivr.net/gh/GoldmanXu/kling_formal@main/videos/ly_video_vr_only/batch33_sample_011_row0000.mp4" controls preload="metadata" playsinline muted></video>
       <div class="name">ly_video_vr_only</div>
     </div>
@@ -1354,18 +1530,22 @@
   </div>
   <div class="grid">
     <div class="cell">
+      <div class="dd t">dynamic_degree: ✓ True</div>
       <video src="https://cdn.jsdelivr.net/gh/GoldmanXu/kling_formal@main/videos/base/batch33_sample_011_row0001.mp4" controls preload="metadata" playsinline muted></video>
       <div class="name">base</div>
     </div>
     <div class="cell">
+      <div class="dd t">dynamic_degree: ✓ True</div>
       <video src="https://cdn.jsdelivr.net/gh/GoldmanXu/kling_formal@main/videos/hk-only-uni-11000/batch33_sample_011_row0001.mp4" controls preload="metadata" playsinline muted></video>
       <div class="name">hk-only-uni-11000</div>
     </div>
     <div class="cell">
+      <div class="dd t">dynamic_degree: ✓ True</div>
       <video src="https://cdn.jsdelivr.net/gh/GoldmanXu/kling_formal@main/videos/ly_only_hpsv3_video/batch33_sample_011_row0001.mp4" controls preload="metadata" playsinline muted></video>
       <div class="name">ly_only_hpsv3_video</div>
     </div>
     <div class="cell">
+      <div class="dd t">dynamic_degree: ✓ True</div>
       <video src="https://cdn.jsdelivr.net/gh/GoldmanXu/kling_formal@main/videos/ly_video_vr_only/batch33_sample_011_row0001.mp4" controls preload="metadata" playsinline muted></video>
       <div class="name">ly_video_vr_only</div>
     </div>
@@ -1385,18 +1565,22 @@
   </div>
   <div class="grid">
     <div class="cell">
+      <div class="dd t">dynamic_degree: ✓ True</div>
       <video src="https://cdn.jsdelivr.net/gh/GoldmanXu/kling_formal@main/videos/base/batch33_sample_011_row0002.mp4" controls preload="metadata" playsinline muted></video>
       <div class="name">base</div>
     </div>
     <div class="cell">
+      <div class="dd t">dynamic_degree: ✓ True</div>
       <video src="https://cdn.jsdelivr.net/gh/GoldmanXu/kling_formal@main/videos/hk-only-uni-11000/batch33_sample_011_row0002.mp4" controls preload="metadata" playsinline muted></video>
       <div class="name">hk-only-uni-11000</div>
     </div>
     <div class="cell">
+      <div class="dd t">dynamic_degree: ✓ True</div>
       <video src="https://cdn.jsdelivr.net/gh/GoldmanXu/kling_formal@main/videos/ly_only_hpsv3_video/batch33_sample_011_row0002.mp4" controls preload="metadata" playsinline muted></video>
       <div class="name">ly_only_hpsv3_video</div>
     </div>
     <div class="cell">
+      <div class="dd t">dynamic_degree: ✓ True</div>
       <video src="https://cdn.jsdelivr.net/gh/GoldmanXu/kling_formal@main/videos/ly_video_vr_only/batch33_sample_011_row0002.mp4" controls preload="metadata" playsinline muted></video>
       <div class="name">ly_video_vr_only</div>
     </div>
@@ -1416,18 +1600,22 @@
   </div>
   <div class="grid">
     <div class="cell">
+      <div class="dd f">dynamic_degree: ✗ False</div>
       <video src="https://cdn.jsdelivr.net/gh/GoldmanXu/kling_formal@main/videos/base/batch33_sample_011_row0004.mp4" controls preload="metadata" playsinline muted></video>
       <div class="name">base</div>
     </div>
     <div class="cell">
+      <div class="dd t">dynamic_degree: ✓ True</div>
       <video src="https://cdn.jsdelivr.net/gh/GoldmanXu/kling_formal@main/videos/hk-only-uni-11000/batch33_sample_011_row0004.mp4" controls preload="metadata" playsinline muted></video>
       <div class="name">hk-only-uni-11000</div>
     </div>
     <div class="cell">
+      <div class="dd f">dynamic_degree: ✗ False</div>
       <video src="https://cdn.jsdelivr.net/gh/GoldmanXu/kling_formal@main/videos/ly_only_hpsv3_video/batch33_sample_011_row0004.mp4" controls preload="metadata" playsinline muted></video>
       <div class="name">ly_only_hpsv3_video</div>
     </div>
     <div class="cell">
+      <div class="dd t">dynamic_degree: ✓ True</div>
       <video src="https://cdn.jsdelivr.net/gh/GoldmanXu/kling_formal@main/videos/ly_video_vr_only/batch33_sample_011_row0004.mp4" controls preload="metadata" playsinline muted></video>
       <div class="name">ly_video_vr_only</div>
     </div>
@@ -1447,18 +1635,22 @@
   </div>
   <div class="grid">
     <div class="cell">
+      <div class="dd f">dynamic_degree: ✗ False</div>
       <video src="https://cdn.jsdelivr.net/gh/GoldmanXu/kling_formal@main/videos/base/batch33_sample_012_row0000.mp4" controls preload="metadata" playsinline muted></video>
       <div class="name">base</div>
     </div>
     <div class="cell">
+      <div class="dd t">dynamic_degree: ✓ True</div>
       <video src="https://cdn.jsdelivr.net/gh/GoldmanXu/kling_formal@main/videos/hk-only-uni-11000/batch33_sample_012_row0000.mp4" controls preload="metadata" playsinline muted></video>
       <div class="name">hk-only-uni-11000</div>
     </div>
     <div class="cell">
+      <div class="dd t">dynamic_degree: ✓ True</div>
       <video src="https://cdn.jsdelivr.net/gh/GoldmanXu/kling_formal@main/videos/ly_only_hpsv3_video/batch33_sample_012_row0000.mp4" controls preload="metadata" playsinline muted></video>
       <div class="name">ly_only_hpsv3_video</div>
     </div>
     <div class="cell">
+      <div class="dd t">dynamic_degree: ✓ True</div>
       <video src="https://cdn.jsdelivr.net/gh/GoldmanXu/kling_formal@main/videos/ly_video_vr_only/batch33_sample_012_row0000.mp4" controls preload="metadata" playsinline muted></video>
       <div class="name">ly_video_vr_only</div>
     </div>
@@ -1478,18 +1670,22 @@
   </div>
   <div class="grid">
     <div class="cell">
+      <div class="dd t">dynamic_degree: ✓ True</div>
       <video src="https://cdn.jsdelivr.net/gh/GoldmanXu/kling_formal@main/videos/base/batch33_sample_012_row0001.mp4" controls preload="metadata" playsinline muted></video>
       <div class="name">base</div>
     </div>
     <div class="cell">
+      <div class="dd t">dynamic_degree: ✓ True</div>
       <video src="https://cdn.jsdelivr.net/gh/GoldmanXu/kling_formal@main/videos/hk-only-uni-11000/batch33_sample_012_row0001.mp4" controls preload="metadata" playsinline muted></video>
       <div class="name">hk-only-uni-11000</div>
     </div>
     <div class="cell">
+      <div class="dd t">dynamic_degree: ✓ True</div>
       <video src="https://cdn.jsdelivr.net/gh/GoldmanXu/kling_formal@main/videos/ly_only_hpsv3_video/batch33_sample_012_row0001.mp4" controls preload="metadata" playsinline muted></video>
       <div class="name">ly_only_hpsv3_video</div>
     </div>
     <div class="cell">
+      <div class="dd t">dynamic_degree: ✓ True</div>
       <video src="https://cdn.jsdelivr.net/gh/GoldmanXu/kling_formal@main/videos/ly_video_vr_only/batch33_sample_012_row0001.mp4" controls preload="metadata" playsinline muted></video>
       <div class="name">ly_video_vr_only</div>
     </div>
@@ -1509,18 +1705,22 @@
   </div>
   <div class="grid">
     <div class="cell">
+      <div class="dd t">dynamic_degree: ✓ True</div>
       <video src="https://cdn.jsdelivr.net/gh/GoldmanXu/kling_formal@main/videos/base/batch33_sample_012_row0002.mp4" controls preload="metadata" playsinline muted></video>
       <div class="name">base</div>
     </div>
     <div class="cell">
+      <div class="dd t">dynamic_degree: ✓ True</div>
       <video src="https://cdn.jsdelivr.net/gh/GoldmanXu/kling_formal@main/videos/hk-only-uni-11000/batch33_sample_012_row0002.mp4" controls preload="metadata" playsinline muted></video>
       <div class="name">hk-only-uni-11000</div>
     </div>
     <div class="cell">
+      <div class="dd t">dynamic_degree: ✓ True</div>
       <video src="https://cdn.jsdelivr.net/gh/GoldmanXu/kling_formal@main/videos/ly_only_hpsv3_video/batch33_sample_012_row0002.mp4" controls preload="metadata" playsinline muted></video>
       <div class="name">ly_only_hpsv3_video</div>
     </div>
     <div class="cell">
+      <div class="dd t">dynamic_degree: ✓ True</div>
       <video src="https://cdn.jsdelivr.net/gh/GoldmanXu/kling_formal@main/videos/ly_video_vr_only/batch33_sample_012_row0002.mp4" controls preload="metadata" playsinline muted></video>
       <div class="name">ly_video_vr_only</div>
     </div>
@@ -1540,18 +1740,22 @@
   </div>
   <div class="grid">
     <div class="cell">
+      <div class="dd t">dynamic_degree: ✓ True</div>
       <video src="https://cdn.jsdelivr.net/gh/GoldmanXu/kling_formal@main/videos/base/batch33_sample_012_row0003.mp4" controls preload="metadata" playsinline muted></video>
       <div class="name">base</div>
     </div>
     <div class="cell">
+      <div class="dd t">dynamic_degree: ✓ True</div>
       <video src="https://cdn.jsdelivr.net/gh/GoldmanXu/kling_formal@main/videos/hk-only-uni-11000/batch33_sample_012_row0003.mp4" controls preload="metadata" playsinline muted></video>
       <div class="name">hk-only-uni-11000</div>
     </div>
     <div class="cell">
+      <div class="dd t">dynamic_degree: ✓ True</div>
       <video src="https://cdn.jsdelivr.net/gh/GoldmanXu/kling_formal@main/videos/ly_only_hpsv3_video/batch33_sample_012_row0003.mp4" controls preload="metadata" playsinline muted></video>
       <div class="name">ly_only_hpsv3_video</div>
     </div>
     <div class="cell">
+      <div class="dd t">dynamic_degree: ✓ True</div>
       <video src="https://cdn.jsdelivr.net/gh/GoldmanXu/kling_formal@main/videos/ly_video_vr_only/batch33_sample_012_row0003.mp4" controls preload="metadata" playsinline muted></video>
       <div class="name">ly_video_vr_only</div>
     </div>
@@ -1571,18 +1775,22 @@
   </div>
   <div class="grid">
     <div class="cell">
+      <div class="dd f">dynamic_degree: ✗ False</div>
       <video src="https://cdn.jsdelivr.net/gh/GoldmanXu/kling_formal@main/videos/base/batch33_sample_012_row0004.mp4" controls preload="metadata" playsinline muted></video>
       <div class="name">base</div>
     </div>
     <div class="cell">
+      <div class="dd f">dynamic_degree: ✗ False</div>
       <video src="https://cdn.jsdelivr.net/gh/GoldmanXu/kling_formal@main/videos/hk-only-uni-11000/batch33_sample_012_row0004.mp4" controls preload="metadata" playsinline muted></video>
       <div class="name">hk-only-uni-11000</div>
     </div>
     <div class="cell">
+      <div class="dd t">dynamic_degree: ✓ True</div>
       <video src="https://cdn.jsdelivr.net/gh/GoldmanXu/kling_formal@main/videos/ly_only_hpsv3_video/batch33_sample_012_row0004.mp4" controls preload="metadata" playsinline muted></video>
       <div class="name">ly_only_hpsv3_video</div>
     </div>
     <div class="cell">
+      <div class="dd t">dynamic_degree: ✓ True</div>
       <video src="https://cdn.jsdelivr.net/gh/GoldmanXu/kling_formal@main/videos/ly_video_vr_only/batch33_sample_012_row0004.mp4" controls preload="metadata" playsinline muted></video>
       <div class="name">ly_video_vr_only</div>
     </div>
@@ -1602,18 +1810,22 @@
   </div>
   <div class="grid">
     <div class="cell">
+      <div class="dd t">dynamic_degree: ✓ True</div>
       <video src="https://cdn.jsdelivr.net/gh/GoldmanXu/kling_formal@main/videos/base/batch33_sample_013_row0000.mp4" controls preload="metadata" playsinline muted></video>
       <div class="name">base</div>
     </div>
     <div class="cell">
+      <div class="dd t">dynamic_degree: ✓ True</div>
       <video src="https://cdn.jsdelivr.net/gh/GoldmanXu/kling_formal@main/videos/hk-only-uni-11000/batch33_sample_013_row0000.mp4" controls preload="metadata" playsinline muted></video>
       <div class="name">hk-only-uni-11000</div>
     </div>
     <div class="cell">
+      <div class="dd t">dynamic_degree: ✓ True</div>
       <video src="https://cdn.jsdelivr.net/gh/GoldmanXu/kling_formal@main/videos/ly_only_hpsv3_video/batch33_sample_013_row0000.mp4" controls preload="metadata" playsinline muted></video>
       <div class="name">ly_only_hpsv3_video</div>
     </div>
     <div class="cell">
+      <div class="dd t">dynamic_degree: ✓ True</div>
       <video src="https://cdn.jsdelivr.net/gh/GoldmanXu/kling_formal@main/videos/ly_video_vr_only/batch33_sample_013_row0000.mp4" controls preload="metadata" playsinline muted></video>
       <div class="name">ly_video_vr_only</div>
     </div>
@@ -1633,18 +1845,22 @@
   </div>
   <div class="grid">
     <div class="cell">
+      <div class="dd f">dynamic_degree: ✗ False</div>
       <video src="https://cdn.jsdelivr.net/gh/GoldmanXu/kling_formal@main/videos/base/batch33_sample_013_row0001.mp4" controls preload="metadata" playsinline muted></video>
       <div class="name">base</div>
     </div>
     <div class="cell">
+      <div class="dd f">dynamic_degree: ✗ False</div>
       <video src="https://cdn.jsdelivr.net/gh/GoldmanXu/kling_formal@main/videos/hk-only-uni-11000/batch33_sample_013_row0001.mp4" controls preload="metadata" playsinline muted></video>
       <div class="name">hk-only-uni-11000</div>
     </div>
     <div class="cell">
+      <div class="dd f">dynamic_degree: ✗ False</div>
       <video src="https://cdn.jsdelivr.net/gh/GoldmanXu/kling_formal@main/videos/ly_only_hpsv3_video/batch33_sample_013_row0001.mp4" controls preload="metadata" playsinline muted></video>
       <div class="name">ly_only_hpsv3_video</div>
     </div>
     <div class="cell">
+      <div class="dd t">dynamic_degree: ✓ True</div>
       <video src="https://cdn.jsdelivr.net/gh/GoldmanXu/kling_formal@main/videos/ly_video_vr_only/batch33_sample_013_row0001.mp4" controls preload="metadata" playsinline muted></video>
       <div class="name">ly_video_vr_only</div>
     </div>
@@ -1664,18 +1880,22 @@
   </div>
   <div class="grid">
     <div class="cell">
+      <div class="dd t">dynamic_degree: ✓ True</div>
       <video src="https://cdn.jsdelivr.net/gh/GoldmanXu/kling_formal@main/videos/base/batch33_sample_013_row0002.mp4" controls preload="metadata" playsinline muted></video>
       <div class="name">base</div>
     </div>
     <div class="cell">
+      <div class="dd t">dynamic_degree: ✓ True</div>
       <video src="https://cdn.jsdelivr.net/gh/GoldmanXu/kling_formal@main/videos/hk-only-uni-11000/batch33_sample_013_row0002.mp4" controls preload="metadata" playsinline muted></video>
       <div class="name">hk-only-uni-11000</div>
     </div>
     <div class="cell">
+      <div class="dd t">dynamic_degree: ✓ True</div>
       <video src="https://cdn.jsdelivr.net/gh/GoldmanXu/kling_formal@main/videos/ly_only_hpsv3_video/batch33_sample_013_row0002.mp4" controls preload="metadata" playsinline muted></video>
       <div class="name">ly_only_hpsv3_video</div>
     </div>
     <div class="cell">
+      <div class="dd t">dynamic_degree: ✓ True</div>
       <video src="https://cdn.jsdelivr.net/gh/GoldmanXu/kling_formal@main/videos/ly_video_vr_only/batch33_sample_013_row0002.mp4" controls preload="metadata" playsinline muted></video>
       <div class="name">ly_video_vr_only</div>
     </div>
@@ -1695,18 +1915,22 @@
   </div>
   <div class="grid">
     <div class="cell">
+      <div class="dd f">dynamic_degree: ✗ False</div>
       <video src="https://cdn.jsdelivr.net/gh/GoldmanXu/kling_formal@main/videos/base/batch33_sample_013_row0003.mp4" controls preload="metadata" playsinline muted></video>
       <div class="name">base</div>
     </div>
     <div class="cell">
+      <div class="dd t">dynamic_degree: ✓ True</div>
       <video src="https://cdn.jsdelivr.net/gh/GoldmanXu/kling_formal@main/videos/hk-only-uni-11000/batch33_sample_013_row0003.mp4" controls preload="metadata" playsinline muted></video>
       <div class="name">hk-only-uni-11000</div>
     </div>
     <div class="cell">
+      <div class="dd t">dynamic_degree: ✓ True</div>
       <video src="https://cdn.jsdelivr.net/gh/GoldmanXu/kling_formal@main/videos/ly_only_hpsv3_video/batch33_sample_013_row0003.mp4" controls preload="metadata" playsinline muted></video>
       <div class="name">ly_only_hpsv3_video</div>
     </div>
     <div class="cell">
+      <div class="dd t">dynamic_degree: ✓ True</div>
       <video src="https://cdn.jsdelivr.net/gh/GoldmanXu/kling_formal@main/videos/ly_video_vr_only/batch33_sample_013_row0003.mp4" controls preload="metadata" playsinline muted></video>
       <div class="name">ly_video_vr_only</div>
     </div>
@@ -1726,18 +1950,22 @@
   </div>
   <div class="grid">
     <div class="cell">
+      <div class="dd f">dynamic_degree: ✗ False</div>
       <video src="https://cdn.jsdelivr.net/gh/GoldmanXu/kling_formal@main/videos/base/batch33_sample_013_row0004.mp4" controls preload="metadata" playsinline muted></video>
       <div class="name">base</div>
     </div>
     <div class="cell">
+      <div class="dd f">dynamic_degree: ✗ False</div>
       <video src="https://cdn.jsdelivr.net/gh/GoldmanXu/kling_formal@main/videos/hk-only-uni-11000/batch33_sample_013_row0004.mp4" controls preload="metadata" playsinline muted></video>
       <div class="name">hk-only-uni-11000</div>
     </div>
     <div class="cell">
+      <div class="dd t">dynamic_degree: ✓ True</div>
       <video src="https://cdn.jsdelivr.net/gh/GoldmanXu/kling_formal@main/videos/ly_only_hpsv3_video/batch33_sample_013_row0004.mp4" controls preload="metadata" playsinline muted></video>
       <div class="name">ly_only_hpsv3_video</div>
     </div>
     <div class="cell">
+      <div class="dd t">dynamic_degree: ✓ True</div>
       <video src="https://cdn.jsdelivr.net/gh/GoldmanXu/kling_formal@main/videos/ly_video_vr_only/batch33_sample_013_row0004.mp4" controls preload="metadata" playsinline muted></video>
       <div class="name">ly_video_vr_only</div>
     </div>
